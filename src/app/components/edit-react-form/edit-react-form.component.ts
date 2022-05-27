@@ -28,7 +28,10 @@ export class EditReactFormComponent implements OnInit, AfterContentChecked {
     id: new FormControl({value: null, disabled: true}),
     userId: new FormControl('', Validators.required),
     title: new FormControl(),
-    body: new FormControl('', Validators.minLength(10))
+    body: new FormControl('', Validators.minLength(10)),
+    otherGroup: new FormGroup({
+      otherControl: new FormControl()
+    })
   });
 
   ngOnInit(): void {
@@ -48,6 +51,8 @@ export class EditReactFormComponent implements OnInit, AfterContentChecked {
   }
 
   onSave() {
+    console.log(this.form.getRawValue());
+    /*
     let userHttp: UserHttp = this.form.getRawValue();
     this.http.put(this.id, userHttp).subscribe(
       response => {
@@ -55,7 +60,7 @@ export class EditReactFormComponent implements OnInit, AfterContentChecked {
         this.userService.updateUser(response);
       },
       error => alert("Operation not successfully")
-    );
+    );*/
   }
 
   goToHomepage() {

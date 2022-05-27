@@ -23,9 +23,13 @@
                     [ngClass]="{'is-invalid': checkControl('body')}"></textarea>
                 <p style="color: red" *ngIf="checkControl('body')">{{getMessageError('body')}}</p>
             </div>
+
+            <div formGroupName="otherGroup">
+                <label>Other Info</label>
+                <input class="form-control" type="text" formControlName="otherControl">
+            </div>
         </div>
-        <button class="btn btn-primary" type="submit"
-            [disabled]="!form.valid || form.pristine">
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid || form.pristine">
             Save
         </button>
     </form>
