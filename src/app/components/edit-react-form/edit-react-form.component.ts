@@ -1,5 +1,5 @@
 import { AfterContentChecked, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { UserHttp, UserModel } from 'src/app/models/user.model';
 import { HttpService } from 'src/app/services/http.service';
@@ -31,8 +31,17 @@ export class EditReactFormComponent implements OnInit, AfterContentChecked {
     body: new FormControl('', Validators.minLength(10)),
     otherGroup: new FormGroup({
       otherControl: new FormControl()
-    })
+    }),
+    array: new FormArray([
+      new FormControl("aaa"),
+      new FormControl("bbb")
+    ])
   });
+
+  array: FormArray = new FormArray([
+    new FormControl("aaa"),
+    new FormControl("bbb")
+  ]);
 
   ngOnInit(): void {
     this.activeRoute.params.subscribe(
@@ -44,6 +53,10 @@ export class EditReactFormComponent implements OnInit, AfterContentChecked {
         )
       }
     )
+  }
+
+  getControlArray() {
+    return this.form.get("array") as FormArray;
   }
 
   initForm(data: UserModel): void {
