@@ -1,0 +1,32 @@
+<div class="container">
+    <button class="btn btn-primary" (click)="goToHomepage()">Go to Homepage</button>
+
+    <form [formGroup]="form" (ngSubmit)="onSave()">
+        <div class="row">
+            <div class="col-md-3">
+                <label>ID</label>
+                <input class="form-control" type="number" formControlName="id" #idProdotto>
+            </div>
+            <div class="col-md-3">
+                <label>User ID*</label>
+                <input class="form-control" type="number" formControlName="userId"
+                    [ngClass]="{'is-invalid': checkControl('userId')}">
+                <p style="color: red" *ngIf="checkControl('userId')">{{getMessageError('userId')}}</p>
+            </div>
+            <div class="col-md-10">
+                <label>Title</label>
+                <input class="form-control" type="text" formControlName="title">
+            </div>
+            <div class="col-md-10">
+                <label>Body</label>
+                <textarea class="form-control" type="text" col="20" row="10" formControlName="body"
+                    [ngClass]="{'is-invalid': checkControl('body')}"></textarea>
+                <p style="color: red" *ngIf="checkControl('body')">{{getMessageError('body')}}</p>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit"
+            [disabled]="!form.valid || form.pristine">
+            Save
+        </button>
+    </form>
+</div>
