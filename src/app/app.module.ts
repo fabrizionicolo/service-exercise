@@ -10,6 +10,10 @@ import { Dependencies2Service } from './services/dependencies2.service';
 import { HttpClientModule } from '@angular/common/http';
 import { EditReactFormComponent } from './components/edit-react-form/edit-react-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PipePipe } from './pipes/pipe.pipe';
+import { AlsoOtherModuleModule } from './also-other-module/also-other-module.module';
+import { SharedModule } from './shared/shared/shared.module';
+import { ModuleService } from './services/module.service';
 
 @NgModule({
   declarations: [
@@ -22,11 +26,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AlsoOtherModuleModule,
+    SharedModule
   ],
   providers: [
     Dependencies2Service,
-    AnotherRandomNumberGeneratorService
+    AnotherRandomNumberGeneratorService,
+    //ModuleService
   ],
   bootstrap: [AppComponent]
 })
